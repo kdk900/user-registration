@@ -8,6 +8,7 @@ import com.facelesscoder.user_registration.entity.AgentProfile;
 import com.facelesscoder.user_registration.entity.User;
 import com.facelesscoder.user_registration.repository.AgentProfileRepository;
 import com.facelesscoder.user_registration.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,6 +26,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.agentProfileRepository = agentProfileRepository;
     }
+    @Transactional
     @Override
     public RegisterUserResponse registerUser(RegisterUserRequestDto userRequestDto) {
         User user = userRepository.findByEmailId(userRequestDto.emailId());
